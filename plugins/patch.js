@@ -201,7 +201,7 @@ smd(
 ); 
 astro_patch.smd(
   {
-    cmdname: "menu",
+    cmdname: "panel",
     desc: "Help list",
     react: "🫀",
     desc: "To show all avaiable commands.",
@@ -319,7 +319,7 @@ ${menuThemeCommandPrefix} *ᴜsᴀɢᴇ ᴛʀᴇɴᴅ:* ${trend_usage}
 ${menuThemeCommandPrefix} *ᴅᴀᴛᴀʙᴀsᴇ:* ${database_info}
 ${menuThemeFooter}  
 ▱▰▱▰▱▰▱▰▱▰▱▱▰▱▱▰
-*🚩𝗥𝗖𝗗-𝗠𝗗🖤*
+*⫷𝗥𝗖𝗗-𝗠𝗗⫸*
 ᴋᴇᴇᴘ ᴜsɪɴɢ ʀᴄᴅ ᴍᴅ
 ▱▰▱▰▱▰▱▰▱▰▱▱▰▱▱▰
 
@@ -388,7 +388,7 @@ smd(
         formatp(os.totalmem() - os.freemem()) +
         "/" +
         formatp(os.totalmem()) +
-        "\n\n *🧑‍💻 :* ᴡᴀsɪᴍᴅ-ᴠ2\n\n" +
+        "\n\n *🧑‍💻 :* 𝗥𝗖𝗗-𝗠𝗗\n\n" +
         readmore +
         "\n╭──❰ *ALL MENU* ❱\n│🏮 Lɪꜱᴛ\n│🏮 Cᴀᴛᴇɢᴏʀʏ\n│🏮 Hᴇʟᴘ\n│🏮 Aʟɪᴠᴇ\n│🏮 Uᴘᴛɪᴍᴇ\n│🏮 Wᴇᴀᴛʜᴇʀ\n│🏮 Lɪɴᴋ\n│🏮 Cᴘᴜ\n│🏮 Rᴇᴘᴏꜱɪᴛᴏʀʏ\n╰─────────────⦁"
       ).trim();
@@ -544,7 +544,7 @@ astro_patch.smd(
     const endTime = new Date().getTime();
     const pingTime = endTime - startTime;
     await context.send(
-      `*🚩....ᴘɪɴɢ...🙆🏻‍♂️.: ${pingTime} ᴍs*`,
+      `*⚡....ᴘɪɴɢ...🙆🏻‍♂️.: ${pingTime} ᴍs*`,
       { edit: messageKey },
       "",
       context
