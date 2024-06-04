@@ -1,5 +1,5 @@
 while true
 do
-echo "Starting WASI-Md!"
+echo "Starting RCD-Md!"
 node .
 done
