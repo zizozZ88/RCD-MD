@@ -1,4 +1,4 @@
-# PATCH RCD-,D ᴜᴘᴅᴀᴛᴇ 𝟷.𝟶.0 ᴘᴀᴛᴄʜ
+# PATCH RCD-MD ᴜᴘᴅᴀᴛᴇ 𝟷.𝟶.0 ᴘᴀᴛᴄʜ
 ### ᴡʜᴀᴛ's ɴᴇᴡ?
 -----------------------------------
 1. *Session ID Not Connecting Error Fixed*
