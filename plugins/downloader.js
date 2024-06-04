@@ -1737,7 +1737,7 @@ smd(
        contextInfo: _0x44a363
      });
    } catch (_0x86b411) {
-     return _0x2c2023.error(_0x86b411 + "\n\ncommand: song", _0x86b411, "*_File not found!!_*");
+     return _0x2c2023.error(_0x86b411 + "\n\ncommand: play", _0x86b411, "*_File not found!!_*");
    }
  });
 smd({
@@ -1765,7 +1765,7 @@ smd({
        contextInfo: _0x44a363
      });
    } catch (_0x86b411) {
-     return _0x2c2023.error(_0x86b411 + "\n\ncommand: play", _0x86b411, "*_File not found!!_*");
+     return _0x2c2023.error(_0x86b411 + "\n\ncommand: song", _0x86b411, "*_File not found!!_*");
    }
  });
  cmd({
