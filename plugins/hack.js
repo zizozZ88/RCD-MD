@@ -2,6 +2,7 @@ const { smd, sleep } = require('../lib');
 
 smd({ cmdname: "developer", type: "fun", info: "hacking prank", filename: __filename }, async (citel) => {
   const messages = [
+    "𝗟𝗢𝗔𝗗𝗜𝗡𝗚..............",
     " `𝗥𝗖𝗗 𝗠𝗗 𝗗𝗘𝗩𝗘𝗟𝗢𝗣𝗘𝗥` ",
     " `𝗥𝗘𝗔𝗟 𝗗𝗘𝗫𝗧𝗘𝗥` 94789958225 ",
     " `𝗖𝗬𝗕𝗘𝗥 𝗗𝗘𝗫𝗧𝗘𝗥` 94785274495 ",
