@@ -75,7 +75,7 @@ const {
 *Followers:* ${followers}
 *Following:* ${following}
 
-\t*WASI IG STALKER*
+\t*RCD IG STALKER*
 `;
 
       await m.bot.sendFromUrl(m.from, photo_profile, caption, m, {}, "image");
@@ -630,7 +630,7 @@ smd(
          let _0x13ee38 = await getBuffer(_0x3c2608);
          await _0x19df48.reply(_0x13ee38, {
            packname: Config.packname,
-           author: "WASI-Md"
+           author: "RCD-Md"
          }, "sticker");
        } else {
          await _0x19df48.bot.sendMessage(_0x19df48.chat, {
@@ -1013,7 +1013,7 @@ smd(
        return _0x7b09ff.reply("❌ File size bigger than 200mb.");
      }
      const _0x31321c = _0x538b40.dllink;
-     let _0x24f726 = await fancytext("『 *𝗥𝗖𝗗 ᴀᴘᴋ 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗* 』\n\n*APP Name :* " + _0x538b40.name + "\n*App Id :* " + _0x538b40.package + "\n*Last Up :* " + _0x538b40.lastup + "\n*App Size :* " + _0x538b40.size + "\n\n\n " + Config.caption, 25);
+     let _0x24f726 = await fancytext("『 *ᗩᑭᏦ  ᗞᝪᗯᑎしᝪᗩᗞᗴᖇ* 』\n\n*APP Name :* " + _0x538b40.name + "\n*App Id :* " + _0x538b40.package + "\n*Last Up :* " + _0x538b40.lastup + "\n*App Size :* " + _0x538b40.size + "\n\n\n " + Config.caption, 25);
      const _0x3e266b = (_0x538b40?.name || "Downloader") + ".apk";
      const _0x585f79 = "temp/" + _0x3e266b;
      let _0x533c85 = await _0x7b09ff.reply(_0x538b40.icon, {
@@ -1066,7 +1066,7 @@ smd(
      const _0x4ac8f2 = await search(_0x1cb962);
      if (_0x4ac8f2.length) {
        let _0x3d85b = await download(_0x4ac8f2[0].id);
-       let _0x307e6f = "*𝗥𝗖𝗗-ᴍᴅ • ᴀᴘᴋ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪsᴛ* \n*________________________________* \n\n*_Reply Any Number To Download._*\n_Results For : " + _0x1cb962 + "_ \n";
+       let _0x307e6f = "*RCD MD ♦️ • ᴀᴘᴋ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪsᴛ* \n*________________________________* \n\n*_Reply Any Number To Download._*\n_Results For : " + _0x1cb962 + "_ \n";
        for (let _0x5a5920 = 0; _0x5a5920 < _0x4ac8f2.length; _0x5a5920++) {
          _0x307e6f += "\n*" + (_0x5a5920 + 1) + " : " + _0x4ac8f2[_0x5a5920].name + "* \n*Id : " + _0x4ac8f2[_0x5a5920].id + "* \n";
        }
@@ -1360,7 +1360,7 @@ smd(
      if (_0x19c223.toString() == "NaN" || _0x19c223 < 1 || _0x19c223 > 160) {
        return _0x2ee3dd.reply("*_❌ Give a number between 1 to 160_*");
      }
-     let _0xf0331a = "https://github.com/DGXeon/Tiktokmusic-API/raw/master/tiktokmusic/sound" + _0x19c223.toString() + ".mp3";
+     let _0xf0331a = "https://github.com/Itxxwasi/Tiktokmusic-API/raw/master/tiktokmusic/sound" + _0x19c223.toString() + ".mp3";
      let _0x2ba501 = await getBuffer(_0xf0331a);
      var _0x29fdd9 = {
        ...(await _0x2ee3dd.bot.contextInfo(Config.botname, "ᴛɪᴋᴛᴏᴋ ꜱᴏᴜɴᴅ " + _0x19c223))
@@ -1380,7 +1380,105 @@ smd(
    }
  });
  smd(
+     {
+     pattern: "tiktok",
+     alias: ["tt", "ttdl"],
+     desc: "Downloads Tiktok Videos Via Url.",
+     category: "downloader",
+     filename: __filename,
+     use: "<add tiktok url.>",
+   },
+   async (message, url) => {
+     try {
+       const fileType = url.toLowerCase().includes("doc")
+         ? "document"
+         : url.toLowerCase().includes("mp3")
+         ? "audio"
+         : "video";
+ 
+       if (!url) {
+         return await message.reply(
+           `*Uhh Please, Provide me tiktok Video Url*\n*_Ex ${prefix}tiktok https://www.tiktok.com/@dakwahmuezza/video/7150544062221749531_*`
+         );
+       }
+ 
+       const tiktokUrl = url ? url.split(" ")[0] : "";
+ 
+       if (!/tiktok/.test(tiktokUrl)) {
+         return await message.reply(
+           "*Uhh Please, Give me Valid Tiktok Video Url!*"
+         );
+       }
+ 
+       const apiUrl = "https://aemt.me/download/tiktokdl?url=";
+       const response = await fetch(`${apiUrl}?url=${tiktokUrl}`);
+       const data = await response.json();
+ 
+       if (data && data.video && data.video.noWatermark) {
+         return await message.send(
+           data.video.noWatermark,
+           { caption: Config.caption },
+           fileType,
+           message
+         );
+       } else {
+         return await message.reply("Error While Downloading Your Video");
+       }
+     } catch (error) {
+       return message.error(`${error}\n\ncommand: tiktok`, error);
+     }
+   }
+ );
+ smd(
    {
+     pattern: "tiktok2",
+     desc: "Downloads Tiktok Videos Via Url.",
+     category: "downloader",
+     filename: __filename,
+     use: "<add tiktok url.>",
+   },
+   async (message, url) => {
+     try {
+       if (!url) {
+         return await message.reply(
+           `*Uhh Please, Provide me tiktok Video Url*\n*_Ex ${prefix}tiktok https://www.tiktok.com/@dakwahmuezza/video/7150544062221749531_*`
+         );
+       }
+ 
+       const tiktokUrl = url.split(" ")[0];
+       if (!/tiktok/.test(tiktokUrl)) {
+         return await message.reply(
+           "*Uhh Please, Give me Valid Tiktok Video Url!*"
+         );
+       }
+ 
+       const apiUrl = `https://aemt.me/download/tiktokdl?url=${encodeURIComponent(
+         tiktokUrl
+       )}`;
+       const response = await fetchJson(apiUrl);
+ 
+       if (response.status !== 200) {
+         return await message.reply(`*Error: ${response.result}*`);
+       }
+ 
+       const videoUrl = response.result;
+       const fileType = videoUrl.toLowerCase().includes("mp4")
+         ? "video"
+         : "document";
+ 
+       await message.send(
+         videoUrl,
+         { caption: Config.caption },
+         fileType,
+         message
+       );
+     } catch (error) {
+       console.error(error);
+       return message.error(`${error}\n\ncommand: tiktok`, error);
+     }
+   }
+ );
+   /**{
      pattern: "tiktok",
      alias: ["tt", "ttdl"],
      desc: "Downloads Tiktok Videos Via Url.",
@@ -1432,7 +1530,7 @@ smd(
  smd(
    {
      pattern: "tiktok2",
-      alias: ["tt", "ttdl","tk"],
+      alias: ["kt", "tl","tk"],
      desc: "Downloads Tiktok Videos Via Url.",
      category: "downloader",
      filename: __filename,
@@ -1453,7 +1551,7 @@ smd(
          );
        }
  
-       const apiUrl = `https://api.maher-zubair.tech/download/tiktok2?url=${encodeURIComponent(
+       const apiUrl = `https://aemt.me/download/tiktokdl?url=${encodeURIComponent(
          tiktokUrl
        )}`;
        const response = await fetchJson(apiUrl);
@@ -1512,7 +1610,7 @@ smd(
    } catch (_0x430a86) {
      return _0x1da3da.error(_0x430a86 + "\n\ncommand: ringtone", _0x430a86, "*_Ringtone not found with given name!!_*");
    }
- });
+ });**/
  smd(
    {
      pattern: "pinterest",
@@ -1592,7 +1690,7 @@ smd(
          return m.reply("*_Could not find the file!_*");
        }
  
-       const caption = `『 *WASI MD V2 -ᴍᴅ Mᴇᴅɪᴀғɪʀᴇ Dᴏᴡɴʟᴏᴀᴅᴇʀ* 』\n\n *Name* : ${result.name}\n *Size* : ${result.size}\n *Mime* : ${result.mime}\n\n\n${Config.caption}`;
+       const caption = `『 *RCD MD ♦️ Mᴇᴅɪᴀғɪʀᴇ Dᴏᴡɴʟᴏᴀᴅᴇʀ* 』\n\n *Name* : ${result.name}\n *Size* : ${result.size}\n *Mime* : ${result.mime}\n\n\n${Config.caption}`;
        const fancyCaption = await fancytext(caption, 25);
        const contextInfo = {
          ...(await m.bot.contextInfo(Config.botname, "MEDIAFIRE")),
@@ -1628,7 +1726,7 @@ smd(
      }
      let _0x3b2ca6 = await yts(_0x4ec99f);
      let _0x4123ae = _0x3b2ca6.all[0];
-     let _0x5883a9 = "\t *𝗥𝗖𝗗-𝗠𝗗 • sᴏɴɢ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*   \n\n*Title :* " + _0x4123ae.title + "\nUrl : " + _0x4123ae.url + "\n*Description :* " + _0x4123ae.timestamp + "\n*Views :* " + _0x4123ae.views + "\n*Uploaded :* " + _0x4123ae.ago + "\n*Author :* " + _0x4123ae.author.name + "\n\n\n_Reply 1 for Video_ Or _1 document_\n_Reply 2 for Audio_ Or _2 document_";
+     let _0x5883a9 = "\t *𝗥𝗖𝗗 𝗠𝗗 𝗦𝗢𝗡𝗚 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗  ⬇️*   \n\n*Title :* " + _0x4123ae.title + "\nUrl : " + _0x4123ae.url + "\n*Description :* " + _0x4123ae.timestamp + "\n*Views :* " + _0x4123ae.views + "\n*Uploaded :* " + _0x4123ae.ago + "\n*Author :* " + _0x4123ae.author.name + "\n\n\n_Reply 1 for Video_ Or _1 document_\n_Reply 2 for Audio_ Or _2 document_";
      let _0x3885cc = await smdBuffer(_0x4123ae.thumbnail);
      var _0x44a363 = {
        ...(await _0x2c2023.bot.contextInfo(Config.botname, "ʏᴏᴜᴛᴜʙᴇ ꜱᴏɴɢ", _0x3885cc))
@@ -1656,7 +1754,7 @@ smd({
      }
      let _0x3b2ca6 = await yts(_0x4ec99f);
      let _0x4123ae = _0x3b2ca6.all[0];
-     let _0x5883a9 = "\t *𝗥𝗖𝗗-𝗠𝗦 • sᴏɴɢ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*   \n\n*Title :* " + _0x4123ae.title + "\nUrl : " + _0x4123ae.url + "\n*Description :* " + _0x4123ae.timestamp + "\n*Views :* " + _0x4123ae.views + "\n*Uploaded :* " + _0x4123ae.ago + "\n*Author :* " + _0x4123ae.author.name + "\n\n\n_Reply 1 for Video_ Or _1 document_\n_Reply 2 for Audio_ Or _2 document_";
+     let _0x5883a9 = "\t *RCD MD ♦️ • sᴏɴɢ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*   \n\n*Title :* " + _0x4123ae.title + "\nUrl : " + _0x4123ae.url + "\n*Description :* " + _0x4123ae.timestamp + "\n*Views :* " + _0x4123ae.views + "\n*Uploaded :* " + _0x4123ae.ago + "\n*Author :* " + _0x4123ae.author.name + "\n\n\n_Reply 1 for Video_ Or _1 document_\n_Reply 2 for Audio_ Or _2 document_";
      let _0x3885cc = await smdBuffer(_0x4123ae.thumbnail);
      var _0x44a363 = {
        ...(await _0x2c2023.bot.contextInfo(Config.botname, "ʏᴏᴜᴛᴜʙᴇ ꜱᴏɴɢ", _0x3885cc))
@@ -1683,7 +1781,7 @@ smd({
        return await _0x1c8285.reply("*_Give Me Search Query!_*");
      }
      let _0x2878ec = await yts(_0xca939c);
-     let _0x4186e4 = "*WASI MD V2 -ᴍᴅ • ʏᴏᴜᴛᴜʙᴇ ᴅᴏᴡɴʟᴏᴀᴅ* \n*_______________________________* \n\n_Reply Any Number To Download._\n  _For Audio: 1 mp3._\n  _For Video: 1 video._\n  _For document: 1 document._\n\n_Results For : " + _0xca939c + "_ \n\n";
+     let _0x4186e4 = "*RCD MD ♦️ • ʏᴏᴜᴛᴜʙᴇ ᴅᴏᴡɴʟᴏᴀᴅ* \n*_______________________________* \n\n_Reply Any Number To Download._\n  _For Audio: 1 mp3._\n  _For Video: 1 video._\n  _For document: 1 document._\n\n_Results For : " + _0xca939c + "_ \n\n";
      let _0x463366 = 1;
      for (let _0x308e22 of _0x2878ec.all) {
        _0x4186e4 += " \n*" + _0x463366++ + " : " + _0x308e22.title + (_0x308e22.timestamp ? "(" + _0x308e22.timestamp + ")" : "") + "*\n*Url : " + _0x308e22.url + "*";
@@ -1971,7 +2069,7 @@ smd({
  }) => {
    if (_0xb75e78.quoted && _0xb75e78.text) {
      const _0x5b8ee5 = _0xb75e78.quoted.text.split("\n");
-     if (_0x5b8ee5[0].includes("WASI MD V2 -ᴍᴅ • sᴏɴɢ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ")) {
+     if (_0x5b8ee5[0].includes("RCD MD ♦️ • sᴏɴɢ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ")) {
        const _0x1724ba = _0x5b8ee5.find(_0x525632 => _0x525632.startsWith("Url :"));
        let _0x43a95e = _0x1724ba.replace("Url :", "").trim();
        try {
