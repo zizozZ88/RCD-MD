@@ -5,7 +5,7 @@
 const fs = require("fs-extra");
 if (fs.existsSync(".env"))
   require("dotenv").config({ path: __dirname + "/.env" });
-global.audio = "https://github.com/purnapurna2007/Audio-mp3/raw/main/Audio/welcome.mp3";
+global.audio = "";
 global.video = "";
 global.port = process.env.PORT;
 global.appUrl = process.env.APP_URL || "";
