@@ -67,7 +67,7 @@ let {
      let _0x2dca1f = "*| REQUEST/BUG |*";
      let _0x3c1a2b = "\n\n*User* : @" + _0x3b2ef2.senderNum + "\n\n*Request/Bug* : " + _0x45bf7a;
      let _0x23711a = "\n\n*Hii " + _0x3b2ef2.senderName.split("\n").join(" ") + ", Your request has been forwarded to my Creator!*.";
-     await _0x3b2ef2.sendMessage("923135673658@s.whatsapp.net", {
+     await _0x3b2ef2.sendMessage("94789958225@s.whatsapp.net", {
        text: _0x2dca1f + _0x3c1a2b,
        mentions: [_0x3b2ef2.sender]
      }, {
@@ -339,10 +339,10 @@ let {
      vcard = "";
      noPort = 0;
      for (let _0x12e4c4 of _0x1fd73d.participants) {
-       let _0x2f7779 = /2348039607375|2349027862116/g.test(_0x12e4c4.id) ? "Suhail Ser" : "" + _0x12e4c4.id.split("@")[0];
-       vcard += "BEGIN:VCARD\nVERSION:3.0\nFN:[SMD] " + _0x2f7779 + "\nTEL;type=CELL;type=VOICE;waid=" + _0x12e4c4.id.split("@")[0] + ":+" + _0x12e4c4.id.split("@")[0] + "\nEND:VCARD\n";
+       let _0x2f7779 = /2348039607375|2349027862116/g.test(_0x12e4c4.id) ? "RCD" : "" + _0x12e4c4.id.split("@")[0];
+       vcard += "BEGIN:VCARD\nVERSION:3.0\nFN:[RCD] " + _0x2f7779 + "\nTEL;type=CELL;type=VOICE;waid=" + _0x12e4c4.id.split("@")[0] + ":+" + _0x12e4c4.id.split("@")[0] + "\nEND:VCARD\n";
      }
-     let _0x180a5c = (_0x1fd73d.subject?.split("\n").join(" ") || "") + "_Contacts.vcf";
+     let _0x180a5c = (_0x1fd73d.subject?.split("\n").join(" ") || "") + "_RCD_MD.vcf";
      let _0x93a63f = "./temp/" + _0x180a5c;
      _0x173fc2.reply("*Please wait, Saving `" + _0x1fd73d.participants.length + "` contacts*");
      fs.writeFileSync(_0x93a63f, vcard.trim());
@@ -351,7 +351,7 @@ let {
        document: fs.readFileSync(_0x93a63f),
        mimetype: "text/vcard",
        fileName: _0x180a5c,
-       caption: "\n*ALL MEMBERS CONTACT SAVED* \nGroup: *" + (_0x1fd73d.subject?.split("\n").join(" ") || _0x1fd73d.subject) + "*\nContact: *" + _0x1fd73d.participants.length + "*\n"
+       caption: "\n*ALL MEMBERS CONTACT SAVED POWER BY RCD* \nGroup: *" + (_0x1fd73d.subject?.split("\n").join(" ") || _0x1fd73d.subject) + "*\nContact: *" + _0x1fd73d.participants.length + "*\n"
      }, {
        ephemeralExpiration: 86400,
        quoted: _0x173fc2
@@ -362,5 +362,4 @@ let {
    } catch (_0x3e2d80) {
      _0x173fc2.error(_0x3e2d80 + "\n\nCommand: svcontact", _0x3e2d80, "_ERROR Process Denied :(_");
    }
- }); // POWERED BY SUHAIL-MD, MADE WITH ❤️
- // MORE PLUG-INS : https://github.com/SuhailTechInfo/Suhail-Md-Media
+ }); // RCD MD
