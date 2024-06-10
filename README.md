@@ -1,21 +1,13 @@
-2. Pair with WhatsApp 
-   <p align="left">
-       <a href="https://maria-pair-riders004.koyeb.app/pair.html">
-         <img src="https://play-lh.googleusercontent.com/901aMQFFnVoX2T-YuJmTIwpPve_SUgMv_QSyzMSPtAqt_l0CyXN1DxfD6xXU0r2f9iM=w240-h480-rw" width="90" />
-       </a>
-   </p>
 
-
-
-## <p align="center"> DEXTER-V1-MD WHATSAPP BOT
+## <p align="center"> 𝗥𝗖𝗗-MD WHATSAPP BOT
 <br>
 
-<p align="center"><a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=EB+Garamond&weight=800&size=28&duration=4000&pause=1000&random=false&width=435&lines=WELCOME+TO+THE+DEXTER-V1-MD;MULTI-DEVICE+WHATSAPP+BOT;DEVELOPED+BY+DEXTER;RELEASED+DATE+24%2F03%2F2024." alt="Typing SVG" /></a>
+<p align="center"><a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=EB+Garamond&weight=800&size=28&duration=4000&pause=1000&random=false&width=435&lines=WELCOME+TO+THE+𝗥𝗖𝗗-MD;MULTI-DEVICE+WHATSAPP+BOT;DEVELOPED+BY+RCD+TEAM;RELEASED+DATE+10%2F06%2F2024." alt="Typing SVG" /></a>
 </p>
 
 
-<img src="https://telegra.ph/file/d34e3d6c2b457956becf9.mp4" width="540" height="280" />
-</p>         ⚔ 𝗥𝗖𝗗 𝗠𝗗 ⚔
+<img src="https://telegra.ph/file/a789a7f2437c053ec829a.jpg" width="540" height="280" />
+</p>         ⚔ 𝐑𝐂𝐃 𝐌𝐃 ⚔
 
 ### Setup
 
@@ -26,39 +18,29 @@
 </p>
 🌟 𝗗𝗘𝗫𝗧𝗘𝗥 𝗪𝗘𝗕 𝗦𝗜𝗧𝗘 🌟
 
-<a href="https://new-repo-hazel-three.vercel.app/"><img src="https://img.shields.io/badge/DEXTER-WEB%20SITE-red" alt="DEXTER WEB SITE" width="250"></a>
+<a href="/"><img src="https://img.shields.io/badge/RCD-WEB%20SITE-red" alt="RCD WEB SITE" width="250"></a>
 
-**`𝗗𝗘𝗫𝗧𝗘𝗥 𝗠𝗗 𝗕𝗢𝗧`**
+**`𝗥𝗖𝗗 𝗠𝗗 𝗕𝗢𝗧`**
 
 ##  PAIRING CODE SCAN
 
-<a href="https://dexter-md.onrender.com/"><img src="https://img.shields.io/badge/LOGIN%20WITH-PAIR%20CODE-red" alt="LOGIN WITH PAIR CODE" width="250"></a>
+<a href="https://rcd-pair-f6b9296bccd2.herokuapp.com/"><img src="https://img.shields.io/badge/LOGIN%20WITH-PAIR%20CODE-red" alt="LOGIN WITH PAIR CODE" width="250"></a>
 
-## QR CODE SCAN
-
-<a href="https://qr-dexter-md-b3cdc18409e4.herokuapp.com/"><img src="https://img.shields.io/badge/LOGIN%20WITH-QR%20CODE-red" alt="LOGIN WITH PAIR CODE" width="250"></a>
 ## DEPLOY IN HEROKU
 
- [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/DEXTER-BOT-1/DEXTER-V1-MD/)
+ [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://github.com/DEXTER-BOTS/RCD-MD)
 
    </details>
 </P>
 
-![repo views](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FPurnageethanjana%2FDEXTER-V1-MD&count_bg=%2379C83D&title_bg=%23555555&icon=gitpod.svg&icon_color=%23E7E7E7&title=Views&edge_flat=false)
 
-![forks](https://img.shields.io/github/forks/Purnageethanjana/DEXTER-V1-MD?label=Forks&style=social)
-
-
-
-## Contributions
-
-Contributions to Dexter-Md are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to open an issue or submit a pull request.
+Contributions to RCD-Md are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to open an issue or submit a pull request.
 
 ## License
 
-The DEXTER-MD is released.
+The RCD-MD is released.
 
-Enjoy the diverse features of the DEXTER-MD  to enhance your conversations and make your WhatsApp experience more interesting!
+Enjoy the diverse features of the RCD-MD  to enhance your conversations and make your WhatsApp experience more interesting!
 
 ## Developer:
 - [**WhatsApp**](https://wa.me/94789958225)
