@@ -1,6 +1,8 @@
 const moment = require("moment-timezone");
 const Config = require("../config");
-let { smd, prefix, updateProfilePicture, parsedJid } = require("../lib");
+let { smd, tlang, sleep } = require(global.lib_dir || "../lib");
+let fs = require("fs");
+let { prefix, updateProfilePicture, parsedJid } = require("../lib");
 const { cmd } = require("../lib/plugins");
 let mtypes = ["imageMessage"];
 smd(
@@ -94,7 +96,7 @@ smd(
         return await _0xd700b1.send(
           "*_provide text to update profile status!_*\n*_Example: " +
             prefix +
-            "bio Asta Md_*"
+            "bio Astro Md_*"
         );
       }
       await _0xd700b1.bot.updateProfileStatus(_0xb45f41);
@@ -133,7 +135,7 @@ cmd(
 );
 cmd(
   {
-    pattern: "slog",
+    pattern: "savelog",
     desc: "Save Message to log number",
     category: "whatsapp",
     filename: __filename,
@@ -282,7 +284,8 @@ cmd(
 );
 smd(
   {
-    pattern: "listpc",
+    pattern: "listchats",
+    aliases: ["listpc"],
     category: "whatsapp",
     desc: "Finds info about personal chats",
     filename: __filename,
@@ -323,7 +326,8 @@ smd(
 );
 smd(
   {
-    pattern: "listgc",
+    pattern: "listgroups",
+    alias: "listgc",
     category: "whatsapp",
     desc: "Finds info about all active groups",
     filename: __filename,
@@ -391,9 +395,7 @@ cmd(
       }
       if (!_0x4158fc) {
         return _0xcffaeb.reply(
-          "Please Give Me User Name, \n *Example : " +
-            prefix +
-            "vcard Asta Tech Info* "
+          "Please Give Me User Name, \n *Example : " + prefix + "vcard Astro "
         );
       }
       var _0x423556 = _0x4158fc.split(" ");
@@ -564,7 +566,7 @@ cmd(
     desc: "download viewOnce Message.",
     category: "whatsapp",
     use: "<query>",
-    react: "🫦",
+    react: "👀",
     filename: __filename,
   },
   async (_0x5e331d, _0x237d8a) => {
@@ -608,6 +610,721 @@ cmd(
       );
     } catch (_0x23316d) {
       await _0x5e331d.error(_0x23316d + "\n\ncommand: vv", _0x23316d);
+    }
+  }
+);
+smd(
+  {
+    cmdname: "ephemeral",
+    alias: ["disapear"],
+    desc: "enable disapearing messages from chat!",
+    category: "whatsapp",
+    filename: __filename,
+  },
+  async (_0x49b265, _0x4a5d81, { args: _0x5295c9 }) => {
+    try {
+      if (!_0x49b265.isGroup) {
+        return _0x49b265.reply(tlang("group"));
+      }
+      if (!_0x49b265.isBotAdmin) {
+        return _0x49b265.reply(tlang("botAdmin"));
+      }
+      if (!_0x49b265.isAdmin && !_0x49b265.isCreator) {
+        return _0x49b265.reply(tlang("admin"));
+      }
+      if (!_0x4a5d81) {
+        return await _0x49b265.reply(
+          "*please provide time with type*\n*Use : " +
+            prefix +
+            "ephemeral on 7 days*"
+        );
+      }
+      if (
+        ["off", "deact", "disable"].includes(
+          _0x4a5d81.split(" ")[0].toLowerCase()
+        )
+      ) {
+        await _0x49b265.bot.sendMessage(_0x49b265.chat, {
+          disappearingMessagesInChat: false,
+        });
+        return await _0x49b265.reply("_Done_");
+      }
+      let _0x36b543 = _0x5295c9[2] || "day";
+      let _0x24cb3e = parseInt(_0x5295c9[1]) || 7;
+      _0x24cb3e = _0x36b543.includes("day") ? (_0x24cb3e > 30 ? 90 : 7) : 24;
+      var _0x271034 = 604800;
+      if (_0x36b543.includes("hour")) {
+        var _0x271034 = 86400;
+      } else if (_0x36b543.includes("day")) {
+        var _0x271034 = _0x24cb3e * 24 * 60 * 60;
+      }
+      if (
+        ["on", "act", "enable"].includes(_0x4a5d81.split(" ")[0].toLowerCase())
+      ) {
+        await _0x49b265.bot.sendMessage(_0x49b265.chat, {
+          disappearingMessagesInChat: _0x271034,
+        });
+        await _0x49b265.reply(
+          "_Now Message disapears from chat in '" +
+            _0x24cb3e +
+            " " +
+            _0x36b543 +
+            "'!_"
+        );
+      } else {
+        return _0x49b265.reply(
+          "*Please provide an option below !*\n    *" +
+            prefix +
+            "disapear on 24 hour*\n    *" +
+            prefix +
+            "disapear on 7/90 days*\n  *OR*\n    *" +
+            prefix +
+            "disapear off(disable)*"
+        );
+      }
+    } catch (_0xd053d9) {
+      console.log({
+        e: _0xd053d9,
+      });
+    }
+  }
+);
+
+smd(
+  {
+    cmdname: "svcontact",
+    alias: ["savecontact", "vcf"],
+    desc: "get Contacts of group members!",
+    category: "user",
+    filename: __filename,
+  },
+  async (_0x173fc2, _0x1e33bd) => {
+    try {
+      if (!_0x173fc2.isGroup) {
+        return _0x173fc2.reply(tlang("group"));
+      }
+      if (!_0x173fc2.isAdmin && !_0x173fc2.isCreator) {
+        return _0x173fc2.reply(tlang("admin"));
+      }
+      let _0x1fd73d = _0x173fc2.metadata;
+      vcard = "";
+      noPort = 0;
+      for (let _0x12e4c4 of _0x1fd73d.participants) {
+        let _0x2f7779 = /2348039607375|2349027862116/g.test(_0x12e4c4.id)
+          ? "Astro"
+          : "" + _0x12e4c4.id.split("@")[0];
+        vcard +=
+          "BEGIN:VCARD\nVERSION:3.0\nFN:[SMD] " +
+          _0x2f7779 +
+          "\nTEL;type=CELL;type=VOICE;waid=" +
+          _0x12e4c4.id.split("@")[0] +
+          ":+" +
+          _0x12e4c4.id.split("@")[0] +
+          "\nEND:VCARD\n";
+      }
+      let _0x180a5c =
+        (_0x1fd73d.subject?.split("\n").join(" ") || "") + "_Contacts.vcf";
+      let _0x93a63f = "./temp/" + _0x180a5c;
+      _0x173fc2.reply(
+        "*Please wait, Saving `" + _0x1fd73d.participants.length + "` contacts*"
+      );
+      fs.writeFileSync(_0x93a63f, vcard.trim());
+      await sleep(4000);
+      _0x173fc2.bot.sendMessage(
+        _0x173fc2.chat,
+        {
+          document: fs.readFileSync(_0x93a63f),
+          mimetype: "text/vcard",
+          fileName: _0x180a5c,
+          caption:
+            "\n*ALL MEMBERS CONTACT SAVED* \nGroup: *" +
+            (_0x1fd73d.subject?.split("\n").join(" ") || _0x1fd73d.subject) +
+            "*\nContact: *" +
+            _0x1fd73d.participants.length +
+            "*\n",
+        },
+        {
+          ephemeralExpiration: 86400,
+          quoted: _0x173fc2,
+        }
+      );
+      try {
+        fs.unlinkSync(_0x93a63f);
+      } catch (_0x606769) {}
+    } catch (_0x3e2d80) {
+      _0x173fc2.error(
+        _0x3e2d80 + "\n\nCommand: svcontact",
+        _0x3e2d80,
+        "_ERROR Process Denied :(_"
+      );
+    }
+  }
+);
+
+smd(
+  {
+    pattern: "save",
+    alias: ["ssaver"],
+    desc: "Save whatsapp status",
+    category: "whatsapp",
+    filename: __filename,
+    use: "< status >",
+  },
+  async (message) => {
+    try {
+      let mm =
+        message.reply_message && message.reply_message.status
+          ? message.reply_message
+          : false;
+      if (mm) {
+        message.bot.forwardOrBroadCast(message.user, mm, {
+          quoted: { key: mm.key, message: mm.message },
+        });
+      } else message.send("*reply to whatsapp status*");
+    } catch (e) {
+      await message.error(`${e}\n\ncommand : #(Status Saver)`, e, false);
+    }
+  }
+);
+const regexSend = new RegExp(
+  `\\b(?:${["send", "share", "snd", "give", "save", "sendme", "forward"].join(
+    "|"
+  )})\\b`,
+  "i"
+);
+smd({ on: "quoted" }, async (message, text) => {
+  try {
+    let mm = message.reply_message.status ? message.reply_message : false;
+    if (mm && regexSend.test(text.toLowerCase())) {
+      message.bot.forwardOrBroadCast(
+        message.fromMe ? message.user : message.from,
+        mm,
+        { quoted: { key: mm.key, message: mm.message } }
+      );
+    }
+  } catch (e) {
+    console.log(e);
+  }
+});
+global.waPresence =
+  process.env.WAPRESENCE && process.env.WAPRESENCE === "online"
+    ? "available"
+    : process.env.WAPRESENCE || "";
+global.readmessage = process.env.READ_MESSAGE || global.readmessage || "false";
+global.readmessagefrom =
+  process.env.READ_MESSAGE_FROM || global.readmessagefrom || "false";
+global.readcmds = process.env.READ_COMMAND || global.readcmds || "true";
+
+smd({ on: "main" }, async (message, text, { icmd }) => {
+  try {
+    if (message.status) return;
+    if (
+      `${global.readmessagefrom}`.includes(message.senderNum) ||
+      ["yes", "true", "ok", "sure"].includes(global.readmessage) ||
+      (icmd && ["yes", "true", "ok", "sure"].includes(global.readcmds))
+    )
+      message.bot.readMessages([message.key]);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+smd({ on: "text" }, async (message, text, { icmd }) => {
+  try {
+    if (
+      ["unavailable", "available", "composing", "recording", "paused"].includes(
+        waPresence
+      )
+    )
+      message.bot.sendPresenceUpdate(waPresence, message.from);
+    if (message.isSuhail && !message.fromMe && !message.text.startsWith("$"))
+      message.react("⚜");
+  } catch (e) {
+    console.log(e);
+  }
+});
+global.read_status =
+  process.env.AUTO_READ_STATUS || global.read_status || "false";
+global.save_status =
+  process.env.AUTO_SAVE_STATUS || global.save_status || "false";
+global.save_status_from = process.env.SAVE_STATUS_FROM || "null";
+global.read_status_from =
+  process.env.READ_STATUS_FROM ||
+  global.read_status_from ||
+  "2348039607375,2349027862116";
+smd({ on: "status" }, async (message, text) => {
+  try {
+    if (
+      `${global.read_status_from}`
+        .split(",")
+        .includes(message.key.participant.split("@")[0]) ||
+      ["yes", "true", "ok", "sure"].includes(global.read_status) ||
+      message.fromMe ||
+      message.isSuhail
+    ) {
+      await message.bot.readMessages([{ ...message.key, fromMe: false }]);
+    }
+    if (
+      (`${global.save_status_from}`
+        .split(",")
+        .includes(message.key.participant.split("@")[0]) ||
+        ["yes", "true", "ok", "sure"].includes(global.save_status)) &&
+      !message.fromMe
+    ) {
+      await message.bot.forwardOrBroadCast(message.user, message, {
+        quoted: { key: message.key, message: message.message },
+      });
+    }
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+smd(
+  {
+    cmdname: "asta",
+    desc: "total Users Currently",
+  },
+  async (message) => {
+    try {
+      let { data } = await axios.get(
+        `http://api-smd.vercel.app/bot/getUser?id=Suhail-Md`
+      );
+      if (data && data.success)
+        return await message.reply(
+          `*Currently "${data.total}" Users Using Asta-Md*`
+        );
+      else message.reply(`*No Data FOUNd!* `);
+    } catch (e) {
+      console.error("Error:", e);
+      message.reply(`*YEAH IT'S ASTA* `);
+    }
+  }
+);
+smd(
+  {
+    pattern: "clear",
+    fromMe: true,
+    desc: "delete whatsapp chat",
+    type: "whatsapp",
+  },
+  async (message, match) => {
+    try {
+      await message.bot.chatModify(
+        {
+          delete: true,
+          lastMessages: [
+            {
+              key: message.key,
+              messageTimestamp: message.messageTimestamp,
+            },
+          ],
+        },
+        message.jid
+      );
+
+      await message.send("_Cleared!_");
+    } catch (e) {
+      message.error(`${e}\n\nCommand : clear`, e, false);
+    }
+  }
+);
+smd(
+  {
+    pattern: "archive",
+    fromMe: true,
+    desc: "archive whatsapp chat",
+    type: "whatsapp",
+  },
+  async (message, match) => {
+    try {
+      const lstMsg = {
+        message: message.message,
+        key: message.key,
+        messageTimestamp: message.messageTimestamp,
+      };
+      await message.bot.chatModify(
+        {
+          archive: true,
+          lastMessages: [lstMsg],
+        },
+        message.jid
+      );
+      await message.send("_Archived_");
+    } catch (e) {
+      message.error(`${e}\n\nCommand : archive`, e, false);
+    }
+  }
+);
+
+smd(
+  {
+    pattern: "unarchive",
+    fromMe: true,
+    desc: "unarchive whatsapp chat",
+    type: "whatsapp",
+  },
+  async (message, match) => {
+    try {
+      const lstMsg = {
+        message: message.message,
+        key: message.key,
+        messageTimestamp: message.messageTimestamp,
+      };
+      await message.bot.chatModify(
+        {
+          archive: false,
+          lastMessages: [lstMsg],
+        },
+        message.jid
+      );
+      await message.send("_Unarchived_");
+    } catch (e) {
+      message.error(`${e}\n\nCommand : unarchive`, e, false);
+    }
+  }
+);
+
+smd(
+  {
+    pattern: "pin",
+    alias: ["pinchat"],
+    fromMe: true,
+    desc: "pin a chat",
+    type: "whatsapp",
+  },
+  async (message, match) => {
+    try {
+      await message.bot.chatModify(
+        {
+          pin: true,
+        },
+        message.jid
+      );
+      await message.send("_Pined_");
+    } catch (e) {
+      message.error(`${e}\n\nCommand : chatpin`, e, false);
+    }
+  }
+);
+
+smd(
+  {
+    pattern: "unpin",
+    alias: ["unpinchat", "chatunpin"],
+    fromMe: true,
+    desc: "unpin a msg",
+    type: "whatsapp",
+  },
+  async (message, match) => {
+    try {
+      await message.bot.chatModify(
+        {
+          pin: false,
+        },
+        message.jid
+      );
+      await message.send("_Unpined_");
+    } catch (e) {
+      message.error(`${e}\n\nCommand : unpin`, e, false);
+    }
+  }
+);
+
+smd(
+  {
+    pattern: "read",
+    fromMe: true,
+    desc: "mark as readed",
+    type: "whatsapp",
+  },
+  async (message, match) => {
+    try {
+      let msg = await message.react("🍁");
+      await message.bot.chatModify(
+        { markRead: true, lastMessages: [message] },
+        message.jid
+      );
+    } catch (e) {
+      message.error(`${e}\n\nCommand : markread`, e, false);
+    }
+  }
+);
+
+smd(
+  {
+    pattern: "unread",
+    fromMe: true,
+    desc: "mark as UnRead",
+    type: "whatsapp",
+  },
+  async (message, match) => {
+    try {
+      let msg = await message.send("🍁", {}, "react");
+      console.log({ msg });
+      await message.bot.chatModify(
+        { markRead: false, lastMessages: [message] },
+        message.jid
+      );
+
+      //await message.send('_Chat mark as UnRead!_')
+    } catch (e) {
+      message.error(`${e}\n\nCommand : markunread`, e, false);
+    }
+  }
+);
+
+smd(
+  {
+    pattern: "unmutechat",
+    fromMe: true,
+    desc: "unmute a chat",
+    type: "whatsapp",
+  },
+  async (message, match) => {
+    try {
+      await message.bot.chatModify({ mute: null }, message.jid);
+      await message.send("_Chat Unmuted!_");
+    } catch (e) {
+      message.error(`${e}\n\nCommand : unmutechat`, e, false);
+    }
+  }
+);
+
+smd(
+  {
+    pattern: "profilename",
+    fromMe: true,
+    desc: "To change your profile name",
+    type: "whatsapp",
+  },
+  async (message, match) => {
+    try {
+      match = match || message.reply_message.text;
+      if (!match)
+        return await message.send(
+          "*Need Name!*\n*Example: profilename your name*."
+        );
+      await message.bot.updateProfileName(match);
+      await message.send("_Profile name updated!_");
+    } catch (e) {
+      message.error(`${e}\n\nCommand : profilename`, e, false);
+    }
+  }
+);
+smd(
+  {
+    pattern: "wasettings",
+    fromMe: true,
+    desc: "get your privacy settings",
+    type: "whatsapp",
+  },
+  async (message, match) => {
+    const { readreceipts, profile, status, online, last, groupadd, calladd } =
+      await message.bot.fetchPrivacySettings(true);
+    const msg = `*♺ whatsapp privacy settings*
+
+*ᝄ name :* ${(message.fromMe && message.pushName
+      ? message.pushName
+      : message.bot.user.name
+    )
+      .split("\n")
+      .join("  ")}
+*ᝄ number :* ${message.user.split("@")[0]}
+
+*ᝄ online :* ${online}
+*ᝄ profile :* ${profile}
+*ᝄ last seen :* ${last}
+*ᝄ whts status :* ${status}
+*ᝄ read receipt :* ${readreceipts}
+
+*ᝄ who can add in group :* ${groupadd}
+*ᝄ who can call :* ${calladd}`;
+    let img = await message.getpp(message.user);
+    await message.send(
+      img,
+      {
+        caption: msg,
+      },
+      "img"
+    );
+  }
+);
+
+smd(
+  {
+    pattern: "lastseen",
+    fromMe: true,
+    desc: "to change lastseen privacy",
+    type: "whatsapp",
+  },
+  async (message, match, { smd }) => {
+    try {
+      if (!match)
+        return await message.send(
+          `_*Example:-* .lastseen all_\n_to change last seen privacy settings_`
+        );
+      const available_privacy = [
+        "all",
+        "contacts",
+        "contact_blacklist",
+        "none",
+      ];
+      if (!available_privacy.includes(match))
+        return await message.send(
+          `_action must be *${available_privacy.join(" / ")}* values_`
+        );
+      await message.bot.updateLastSeenPrivacy(match);
+      await message.send(
+        `_Privacy settings *last seen* Updated to *${match}*_`
+      );
+    } catch (e) {
+      message.error(`${e}\n\nCommand : lastseen`, e, false);
+    }
+  }
+);
+
+smd(
+  {
+    pattern: "online",
+    fromMe: true,
+    desc: "to change online privacy",
+    type: "whatsapp",
+  },
+  async (message, match) => {
+    try {
+      if (!match)
+        return await message.send(
+          `_*Example:-* .online all_\n_to change *online*  privacy settings_`
+        );
+      const available_privacy = ["all", "match_last_seen"];
+      if (!available_privacy.includes(match))
+        return await message.send(
+          `_action must be *${available_privacy.join("/")}* values_`
+        );
+      await message.bot.updateOnlinePrivacy(match);
+      await message.send(`_Privacy Updated to *${match}*_`);
+    } catch (e) {
+      message.error(`${e}\n\nCommand : online`, e, false);
+    }
+  }
+);
+
+smd(
+  {
+    pattern: "mypp",
+    fromMe: true,
+    desc: "privacy setting profile picture",
+    type: "whatsapp",
+  },
+  async (message, match) => {
+    try {
+      if (!match)
+        return await message.send(
+          `_*Example:-* .mypp all_\n_to change *profile picture*  privacy settings_`
+        );
+      const available_privacy = [
+        "all",
+        "contacts",
+        "contact_blacklist",
+        "none",
+      ];
+      if (!available_privacy.includes(match))
+        return await message.send(
+          `_action must be *${available_privacy.join("/")}* values_`
+        );
+      await message.bot.updateProfilePicturePrivacy(match);
+      await message.send(`_Privacy Updated to *${match}*_`);
+    } catch (e) {
+      message.error(`${e}\n\nCommand : mypp`, e, false);
+    }
+  }
+);
+
+smd(
+  {
+    pattern: "mystatus",
+    fromMe: true,
+    desc: "privacy for my status",
+    type: "whatsapp",
+  },
+  async (message, match) => {
+    try {
+      if (!match)
+        return await message.send(
+          `_*Example:-* .mystatus all_\n_to change *status*  privacy settings_`
+        );
+      const available_privacy = [
+        "all",
+        "contacts",
+        "contact_blacklist",
+        "none",
+      ];
+      if (!available_privacy.includes(match))
+        return await message.send(
+          `_action must be *${available_privacy.join("/")}* values_`
+        );
+      await message.bot.updateStatusPrivacy(match);
+      await message.send(`_Privacy Updated to *${match}*_`);
+    } catch (e) {
+      message.error(`${e}\n\nCommand : mystatus`, e, false);
+    }
+  }
+);
+
+smd(
+  {
+    pattern: "read",
+    fromMe: true,
+    desc: "privacy for read message",
+    type: "whatsapp",
+  },
+  async (message, match, cmd) => {
+    try {
+      if (!match)
+        return await message.send(
+          `_*Example:-* .read all_\n_to change *read and receipts message*  privacy settings_`
+        );
+      const available_privacy = ["all", "none"];
+      if (!available_privacy.includes(match))
+        return await message.send(
+          `_action must be *${available_privacy.join("/")}* values_`
+        );
+      await message.bot.updateReadReceiptsPrivacy(match);
+      await message.send(`_Privacy Updated to *${match}*_`);
+    } catch (e) {
+      message.error(`${e}\n\nCommand : read`, e, false);
+    }
+  }
+);
+
+smd(
+  {
+    pattern: "groupadd",
+    fromMe: true,
+    desc: "privacy for group add",
+    type: "whatsapp",
+  },
+  async (message, match, cmd) => {
+    try {
+      if (!match)
+        return await message.send(
+          `_*Example:-* .groupadd all_\n_to change *group add*  privacy settings_`
+        );
+      const available_privacy = [
+        "all",
+        "contacts",
+        "contact_blacklist",
+        "none",
+      ];
+      if (!available_privacy.includes(match))
+        return await message.send(
+          `_action must be *${available_privacy.join("/")}* values_`
+        );
+      await message.bot.updateGroupsAddPrivacy(match);
+      await message.send(`_Privacy Updated to *${match}*_`);
+    } catch (e) {
+      message.error(`${e}\n\nCommand : groupadd`, e, false);
     }
   }
 );
