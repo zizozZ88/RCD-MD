@@ -1,6 +1,6 @@
 
-## <p align="center"> 𝗥𝗖𝗗-MD WHATSAPP BOT
-<br>
+## <p align="center">❮ 𝗥𝗖𝗗-MD WHATSAPP BOT
+❯<br>
 
 <p align="center">
   <a href="https://git.io/typing-svg">
