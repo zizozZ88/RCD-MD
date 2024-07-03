@@ -45,7 +45,7 @@ global.scan = "https://wasimdscanner-68feefafb737.herokuapp.com/";
 
 global.SESSION_ID =
   process.env.SESSION_ID ||
-  ""  YOUR SESSION ID 
+  ""
 module.exports = {
   menu: process.env.MENU || "",
   HANDLERS: process.env.PREFIX || ".",
