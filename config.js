@@ -9,7 +9,7 @@ global.audio = "";
 global.video = "";
 global.port = process.env.PORT;
 global.appUrl = process.env.APP_URL || "";
-global.email = "";
+global.email = "dextermd556@gmail.com";
 global.location = "Sri lanka .";
 global.mongodb = process.env.MONGODB_URI || "";
 global.allowJids = process.env.ALLOW_JID || "94789958225@s.whatsapp.net";
@@ -48,7 +48,7 @@ global.SESSION_ID =
   ""  YOUR SESSION ID 
 module.exports = {
   menu: process.env.MENU || "",
-  HANDLERS: process.env.PREFIX || ",",
+  HANDLERS: process.env.PREFIX || ".",
   BRANCH: process.env.BRANCH || "main",
   VERSION: process.env.VERSION || "1.0.0",
   caption: process.env.CAPTION || "🇱🇰 P͢O͢W͢E͢R͢ B͢Y͢ R͢C͢D͢ M͢D͢",
