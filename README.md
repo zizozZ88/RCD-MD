@@ -36,7 +36,8 @@
 
 ##  DEPLOY SCALINGO
 
-[![DEPLOY ON SCALINGO](https://www.scalingo.com/deploy/button.svg)](https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2Fpurnapurna2007%2FSend2%3Ftab%3Dreadme-ov-file&template=https://github.com/DEXTER-BOTS/STATUS-SENDER)
+href='https://auth.scalingo.com/users/sign_in' target="_blank"><img alt='DEPLOY SCALINGO' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=scalingo&logoColor=white'/></a>
+
 
 
 ##  DEPLOY RAILWAY
