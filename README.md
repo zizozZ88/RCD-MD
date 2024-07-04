@@ -36,7 +36,7 @@
 
 ##  DEPLOY SCALINGO
 
-href='https://auth.scalingo.com/users/sign_in' target="_blank"><img alt='DEPLOY SCALINGO' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=scalingo&logoColor=white'/></a>
+href='https://auth.scalingo.com/users/sign_in' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=scalingo&logoColor=white'/></a>
 
 
 
