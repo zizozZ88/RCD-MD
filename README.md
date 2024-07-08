@@ -22,7 +22,7 @@
 </p>
 🌟 𝗥𝗖𝗗 𝗪𝗘𝗕 𝗦𝗜𝗧𝗘 🌟
 
-<a href="/">https://rcd-md-qr-link.onrender.com/<img src="https://img.shields.io/badge/RCD-WEB%20SITE-red" alt="RCD WEB SITE" width="250"></a>
+<a href="https://rcd-md-qr-link.onrender.com/"><img src="https://img.shields.io/badge/RCD-WEB%20SITE-red" alt="RCD WEB SITE" width="250"></a>
 
 **`𝗥𝗖𝗗 𝗠𝗗 𝗕𝗢𝗧`**
 
