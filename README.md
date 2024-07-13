@@ -43,6 +43,57 @@
 
    </details>
 </P>
+<details close>
+<summary>Click to Environment Variables:</summary>
+ 
+<br><br>
+
+```
+SESSION_ID
+```
+```
+AUTO_STATUS_SEEN
+```
+```
+AUTO_DL
+```
+```
+AUTO_READ
+```
+```
+AUTO_TYPING
+```
+```
+AUTO_RECORDING
+```
+```
+ALWAYS_ONLINE
+```
+```
+AUTO_REACT
+```
+```
+AUTO_BLOCK
+```
+```
+REJECT_CALL
+```
+```
+NOT_ALLOW
+```
+```
+MODE
+```
+```
+OWNER_NAME
+```
+```
+OWNER_NUMBER
+```
+```
+WELCOME
+```
+
 
 
 Contributions to RCD-Md are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to open an issue or submit a pull request.
