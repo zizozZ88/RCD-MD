@@ -36,10 +36,6 @@
  
 ##  DEPLOY RENDER
 # <a href="https://dashboard.render.com/web/new"><img title="railway" src="https://img.shields.io/badge/DEPLOY ON RENDER-h?color=red&style=for-the-badge&logo=msi"></a>
-  </details>
-</P>
-<details close>
-<summary>Click to Environment Variables:</summary>
  
 <br><br>
 
@@ -69,73 +65,9 @@ IMAGE
 ```
 ##  DEPLOY SCALINGO
 # <a href="https://auth.scalingo.com/users/sign_up"><img title="railway" src="https://img.shields.io/badge/DEPLOY ON SCALINGO-h?color=red&style=for-the-badge&logo=msi"></a>
-  </details>
-</P>
-<details close>
-<summary>Click to Environment Variables:</summary>
- 
-<br><br>
 
-```
-SESSION_ID
-```
-```
-AUTO_READ_STATUS
-```
-```
-PREFIX
-```
-```
-MODE
-```
-```
-WAPRESENCE
-```
-```
-OWNER_NAME
-```
-```
-OWNER_NUMBER
-```
-```
-IMAGE
-```
 ##  DEPLOY RAILWAY
 # <a href="https://railway.app/template/9oodXq?referralCode=JWglkx"><img title="railway" src="https://img.shields.io/badge/DEPLOY ON RAILWAY-h?color=green&style=for-the-badge&logo=msi"></a>
-
-
-   </details>
-</P>
-<details close>
-<summary>Click to Environment Variables:</summary>
- 
-<br><br>
-
-```
-SESSION_ID
-```
-```
-AUTO_READ_STATUS
-```
-```
-PREFIX
-```
-```
-MODE
-```
-```
-WAPRESENCE
-```
-```
-OWNER_NAME
-```
-```
-OWNER_NUMBER
-```
-```
-IMAGE
-```
-
 
 Contributions to RCD-Md are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to open an issue or submit a pull request.
 
