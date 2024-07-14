@@ -94,6 +94,7 @@ OWNER_NUMBER
 WELCOME
 ```
 
+[![Download](https://img.shields.io/github/v/release/username/repository?label=Download)](https://github.com/username/repository/releases/latest/download/yourfile.zip)
 
 
 Contributions to RCD-Md are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to open an issue or submit a pull request.
