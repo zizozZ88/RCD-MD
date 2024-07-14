@@ -63,6 +63,8 @@ OWNER_NUMBER
 ```
 IMAGE
 ```
+# <a href="https://uptimerobot.com/signUp?ref=hp-hero"><img title="railway" src="https://img.shields.io/badge/UPTIME ROBOT-h?color=red&style=for-the-badge&logo=msi"></a>
+
 ##  DEPLOY SCALINGO
 # <a href="https://auth.scalingo.com/users/sign_up"><img title="railway" src="https://img.shields.io/badge/DEPLOY ON SCALINGO-h?color=red&style=for-the-badge&logo=msi"></a>
 
