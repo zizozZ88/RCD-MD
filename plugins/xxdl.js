@@ -1,4 +1,4 @@
-import { xnxxSearch, xnxxdl } from '../lib'
+import { xnxxSearch, xnxxdl } from '../lib/plugins'
 
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
   let chat = global.db.data.chats[m.chat]
@@ -51,11 +51,9 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
   }
 }
 
-handler.help = ['xnxx']
-handler.tags = ['nsfw', 'premium']
-handler.command = ['xnxxsearch', 'xnxxdl', 'xnxx']
-handler.group = true
-handler.premium = false
-handler.register = true
-
-export default handler
+ /*
+ cmd({
+    cmdname :"xxdl",
+    type: "downloader",
+ }
+  */
